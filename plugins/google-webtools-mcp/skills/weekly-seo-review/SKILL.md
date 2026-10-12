@@ -13,10 +13,11 @@ and ask which one when there are several.
 
 1. `weekly_seo_report` with `siteUrl`. This is the backbone: trend vs last week,
    growers, decliners, quick wins, sitemap health.
-2. `find_declining_content` with `siteUrl` — pages losing clicks, to explain the
-   decliners from step 1.
-3. `find_ctr_opportunities` with `siteUrl` — pages ranking well but clicked below the
-   benchmark for their position (title/description work).
+2. `find_declining_content` with `siteUrl` and `period` = `last7d` — pages losing
+   clicks over the same week as step 1, to explain its decliners.
+3. `find_ctr_opportunities` with `siteUrl` and `period` = `last28d` — pages ranking
+   well but clicked below the benchmark for their position (title/description work).
+   Label these as 28-day figures: a week is too little data for CTR.
 4. Only if the user asks for a grade: `seo_health_check` with `siteUrl`.
 
 ## Answer

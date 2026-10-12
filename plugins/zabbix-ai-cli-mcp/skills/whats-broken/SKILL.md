@@ -13,8 +13,10 @@ Optional scope: $ARGUMENTS (a host group or a minimum severity).
 1. `zabbix_problems` with `severity` = `average` (or what the user named), and
    `group` when given. Suppressed problems are included on purpose — keep them, and
    say which maintenance window hides each one.
-2. `zabbix_unreachable` — hosts whose interfaces Zabbix cannot poll. A host here
-   explains every problem on it; group those problems under the host.
+2. `zabbix_unreachable` — hosts with at least one interface Zabbix cannot poll. Name
+   the interface type (agent, SNMP, IPMI, JMX). Problems on that host that come from
+   the same interface are likely downstream of it; problems from other interfaces or
+   checks are not — keep them separate.
 3. `zabbix_maintenance_list` with `active` = `true`. A window that is still open after
    the work it was for is a common reason alerts "stopped".
 4. If the problem list was truncated, say so and offer to narrow by group or severity.

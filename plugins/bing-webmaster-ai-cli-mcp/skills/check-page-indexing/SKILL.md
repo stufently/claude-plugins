@@ -17,9 +17,11 @@ Input: $ARGUMENTS — a page URL, optionally the site as registered in Bing Webm
 3. **Last fetch detail.** `bing_fetched_url_details` with `site_url` and `url`, if
    Bing fetched it recently (otherwise say there is no recent fetch).
 4. **Site-wide causes.** `bing_crawl_issues` with `site_url` (look for this URL or its
-   path), and `bing_blocked_urls` with `site_url` (a removal request hides a page).
+   path), and `bing_blocked_urls` with `site_url`. Only a block with RequestType 1
+   (FullRemoval) hides the page from results; RequestType 0 (CacheOnly) removes only
+   the cached copy and does not explain a missing page.
 5. **Sitemap.** `bing_sitemaps` with `site_url`; for the sitemap that should list the
-   page, `bing_sitemap_details` with `feed_url`.
+   page, `bing_sitemap_details` with `site_url` and `feed_url`.
 6. **Submitting (only if the user asks).** `bing_submission_quota` with `site_url`,
    then `bing_plan_submit_url` with `site_url` and `url`. This only records a plan —
    nothing is sent to Bing. Give the user the `bing-wm plan apply <plan_id>` command
@@ -39,4 +41,6 @@ path is a plan a person applies with `bing-wm` at a terminal.
 ## Done when
 
 The crawl/index state is quoted from `bing_url_info`, and blocks and crawl issues for
-the URL are reported as found or "none".
+the URL are reported as found, or as "nothing returned" — Bing can answer with an empty
+list while issues exist (check the result's `empty_response` flag), so an empty answer
+is not proof that there is no problem.

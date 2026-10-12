@@ -38,7 +38,8 @@ matches their description.
 | Zabbix | `ZABBIX_AI_CLI_MCP_ALLOW_WRITE=false` (fixed in the plugin) | The server allows direct writes unless told otherwise; with this off `zabbix_write` is not offered. |
 | Bing Webmaster | `BING_WM_ALLOW_WRITES=false` (fixed in the plugin) | Writes become `bing_plan_*` tools that only record a plan; you apply it with `bing-wm plan apply`. Spelled out because PyPI 0.1.2 still defaults to direct writes. |
 | Telegram | `TGAI_PROFILE` default `readonly` (upstream plugin) | No tool sends anything in any profile; writes are plans applied from a terminal. |
-| Google, Yandex Metrica | no switch in the server | Use read-only credentials: Search Console *restricted* user / `webmasters.readonly` + `analytics.readonly` scopes; a Metrica OAuth token with `metrika:read` only. The scenarios never call the write tools (`add_property`, `submit_sitemap`, `yandex_metrica_create_counter`, …). |
+| Google | no switch in the server | The server requests write scopes itself (`webmasters`, `analytics.edit`), so scopes do not limit it — the account's permissions do. Add the service account to Search Console as a **Restricted** user and to GA4 with the **Viewer** role. The scenarios never call the write tools (`add_property`, `submit_sitemap`, `ga4_create_property`, …). |
+| Yandex Metrica | no switch in the server | Issue the OAuth token with the `metrika:read` scope only; counter create/delete then fail at the API. The scenarios never call those tools. |
 | Aviasales | read-only API | Fares and lookups only; nothing books or pays. |
 
 To change Zabbix or Bing directly from an agent, configure that server yourself

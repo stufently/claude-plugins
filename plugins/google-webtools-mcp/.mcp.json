@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "google-webtools": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-v", "${GOOGLE_APPLICATION_CREDENTIALS}:/creds/sa.json:ro",
+        "-e", "GOOGLE_APPLICATION_CREDENTIALS=/creds/sa.json",
+        "ghcr.io/stufently/google-webtools-mcp:1.2.1"
+      ]
+    }
+  }
+}

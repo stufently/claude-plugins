@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "aviasales": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "AVIASALES_API_TOKEN",
+        "-e", "AVIASALES_MARKET",
+        "ghcr.io/stufently/aviasales-mcp:0.5.1"
+      ]
+    }
+  }
+}

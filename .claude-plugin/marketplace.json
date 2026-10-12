@@ -1,0 +1,47 @@
+{
+  "name": "stufently-mcp",
+  "description": "Claude Code plugins for stufently's MCP servers: each one bundles the server with safe defaults and ready-made scenarios",
+  "owner": { "name": "stufently", "url": "https://github.com/stufently" },
+  "plugins": [
+    {
+      "name": "zabbix-ai-cli-mcp",
+      "source": "./plugins/zabbix-ai-cli-mcp",
+      "description": "Zabbix: what is broken now, investigate an alert, why a notification did or did not arrive. Read-only by default.",
+      "category": "monitoring"
+    },
+    {
+      "name": "google-webtools-mcp",
+      "source": "./plugins/google-webtools-mcp",
+      "description": "Google Search Console and GA4: check a page's indexing, weekly SEO review.",
+      "category": "seo"
+    },
+    {
+      "name": "bing-webmaster-ai-cli-mcp",
+      "source": "./plugins/bing-webmaster-ai-cli-mcp",
+      "description": "Bing Webmaster: check a page's crawl and index state, review Bing traffic. Writes only as plans a person applies.",
+      "category": "seo"
+    },
+    {
+      "name": "yandex-metrica-mcp",
+      "source": "./plugins/yandex-metrica-mcp",
+      "description": "Yandex Metrica: traffic report and goal conversions for a counter.",
+      "category": "analytics"
+    },
+    {
+      "name": "aviasales-mcp",
+      "source": "./plugins/aviasales-mcp",
+      "description": "Aviasales: find the cheapest flight for a route, a month or a budget.",
+      "category": "travel"
+    },
+    {
+      "name": "telegram-ai-cli-mcp",
+      "source": {
+        "source": "github",
+        "repo": "stufently/telegram-ai-cli-mcp",
+        "sha": "4d0005f72340639462e40d2388166ee416e1b29e"
+      },
+      "description": "Telegram user account: triage unread and mentions, and prepare every write as a plan a person applies. The plugin lives in its own repository; requires `tg-ai` on PATH.",
+      "category": "productivity"
+    }
+  ]
+}

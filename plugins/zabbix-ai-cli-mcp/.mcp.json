@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "zabbix": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "ZABBIX_AI_CLI_MCP_URL",
+        "-e", "ZABBIX_AI_CLI_MCP_TOKEN",
+        "-e", "ZABBIX_AI_CLI_MCP_ALLOW_WRITE=false",
+        "ghcr.io/stufently/zabbix-ai-cli-mcp:0.4.3",
+        "mcp"
+      ]
+    }
+  }
+}

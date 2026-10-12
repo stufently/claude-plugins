@@ -1,0 +1,11 @@
+{
+  "name": "zabbix-ai-cli-mcp",
+  "displayName": "Zabbix",
+  "version": "0.1.0",
+  "description": "Ask Zabbix what is broken and why an alert fired or never arrived. Read-only by default: the bundled server starts with writes switched off.",
+  "author": { "name": "stufently", "url": "https://github.com/stufently" },
+  "homepage": "https://github.com/stufently/zabbix-ai-cli-mcp",
+  "repository": "https://github.com/stufently/zabbix-ai-cli-mcp",
+  "license": "MIT",
+  "keywords": ["zabbix", "monitoring", "alerts", "sre", "mcp"]
+}

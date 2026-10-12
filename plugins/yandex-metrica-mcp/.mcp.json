@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "yandex-metrica": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "YANDEX_METRICA_TOKEN",
+        "ghcr.io/stufently/yandex-metrica-mcp:0.2.2"
+      ]
+    }
+  }
+}

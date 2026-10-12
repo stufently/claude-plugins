@@ -1,0 +1,11 @@
+{
+  "name": "yandex-metrica-mcp",
+  "displayName": "Yandex Metrica",
+  "version": "0.1.0",
+  "description": "Traffic and goal-conversion reports from Yandex Metrica. Give it a token with the metrika:read scope only and the counter create/delete tools the server also exposes have nothing to act with.",
+  "author": { "name": "stufently", "url": "https://github.com/stufently" },
+  "homepage": "https://github.com/stufently/yandex-metrica-mcp",
+  "repository": "https://github.com/stufently/yandex-metrica-mcp",
+  "license": "MIT",
+  "keywords": ["yandex", "metrica", "metrika", "analytics", "mcp"]
+}

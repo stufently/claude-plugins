@@ -1,0 +1,11 @@
+{
+  "name": "google-webtools-mcp",
+  "displayName": "Google Search Console & GA4",
+  "version": "0.1.0",
+  "description": "Check why a page is not in Google, and get a weekly Search Console review, through the google-webtools MCP server.",
+  "author": { "name": "stufently", "url": "https://github.com/stufently" },
+  "homepage": "https://github.com/stufently/google-webtools-mcp",
+  "repository": "https://github.com/stufently/google-webtools-mcp",
+  "license": "MIT",
+  "keywords": ["google", "search-console", "ga4", "seo", "indexing", "mcp"]
+}

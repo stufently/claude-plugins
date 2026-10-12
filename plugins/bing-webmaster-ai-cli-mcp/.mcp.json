@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "bing-webmaster": {
+      "command": "uvx",
+      "args": ["--from", "bing-webmaster-ai-cli-mcp==0.1.2", "bing-webmaster-ai-cli-mcp"],
+      "env": {
+        "BING_WM_ALLOW_WRITES": "false"
+      }
+    }
+  }
+}

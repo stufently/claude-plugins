@@ -38,7 +38,7 @@
       "source": {
         "source": "github",
         "repo": "stufently/telegram-ai-cli-mcp",
-        "sha": "4d0005f72340639462e40d2388166ee416e1b29e"
+        "sha": "e55c1e3b399b9bee84ad6b2686dd5bea491629fd"
       },
       "description": "Telegram user account: triage unread and mentions, and prepare every write as a plan a person applies. The plugin lives in its own repository; requires `tg-ai` on PATH.",
       "category": "productivity"

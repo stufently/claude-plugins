@@ -3,10 +3,14 @@
     "google-webtools": {
       "command": "docker",
       "args": [
-        "run", "-i", "--rm",
-        "-v", "${GOOGLE_APPLICATION_CREDENTIALS}:/creds/sa.json:ro",
-        "-e", "GOOGLE_APPLICATION_CREDENTIALS=/creds/sa.json",
-        "ghcr.io/stufently/google-webtools-mcp:1.2.1"
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        "${user_config.credentials_file}:/creds/sa.json:ro",
+        "-e",
+        "GOOGLE_APPLICATION_CREDENTIALS=/creds/sa.json",
+        "ghcr.io/stufently/google-webtools-mcp:1.2.1@sha256:8c92263dc7595e619daeb6dd5b077775b6488e66eefc4de2abb991f8fd19d19b"
       ]
     }
   }

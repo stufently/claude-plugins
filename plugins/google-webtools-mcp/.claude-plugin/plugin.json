@@ -1,11 +1,29 @@
 {
   "name": "google-webtools-mcp",
-  "displayName": "Google Search Console & GA4",
-  "version": "0.1.0",
+  "displayName": "Google Webtools",
+  "version": "0.2.0",
   "description": "Check why a page is not in Google, and get a weekly Search Console review, through the google-webtools MCP server.",
-  "author": { "name": "stufently", "url": "https://github.com/stufently" },
+  "author": {
+    "name": "stufently",
+    "url": "https://github.com/stufently"
+  },
   "homepage": "https://github.com/stufently/google-webtools-mcp",
   "repository": "https://github.com/stufently/google-webtools-mcp",
   "license": "MIT",
-  "keywords": ["google", "search-console", "ga4", "seo", "indexing", "mcp"]
+  "keywords": [
+    "google",
+    "search-console",
+    "ga4",
+    "seo",
+    "indexing",
+    "mcp"
+  ],
+  "userConfig": {
+    "credentials_file": {
+      "type": "file",
+      "title": "Service account key file",
+      "description": "Absolute path to the Google service-account JSON key. The file is mounted read-only into the container; its contents are not stored by Claude Code.",
+      "required": true
+    }
+  }
 }

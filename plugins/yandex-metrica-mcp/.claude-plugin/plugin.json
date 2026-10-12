@@ -1,11 +1,29 @@
 {
   "name": "yandex-metrica-mcp",
-  "displayName": "Yandex Metrica",
-  "version": "0.1.0",
+  "displayName": "Yandex Metrica MCP",
+  "version": "0.2.0",
   "description": "Traffic and goal-conversion reports from Yandex Metrica. Give it a token with the metrika:read scope only and the counter create/delete tools the server also exposes have nothing to act with.",
-  "author": { "name": "stufently", "url": "https://github.com/stufently" },
+  "author": {
+    "name": "stufently",
+    "url": "https://github.com/stufently"
+  },
   "homepage": "https://github.com/stufently/yandex-metrica-mcp",
   "repository": "https://github.com/stufently/yandex-metrica-mcp",
   "license": "MIT",
-  "keywords": ["yandex", "metrica", "metrika", "analytics", "mcp"]
+  "keywords": [
+    "yandex",
+    "metrica",
+    "metrika",
+    "analytics",
+    "mcp"
+  ],
+  "userConfig": {
+    "oauth_token": {
+      "type": "string",
+      "title": "Yandex Metrica OAuth token",
+      "description": "OAuth token issued with the metrika:read scope only. Stored in the system credential store.",
+      "required": true,
+      "sensitive": true
+    }
+  }
 }

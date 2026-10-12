@@ -1,11 +1,30 @@
 {
   "name": "bing-webmaster-ai-cli-mcp",
-  "displayName": "Bing Webmaster",
-  "version": "0.1.0",
+  "displayName": "Bing Webmaster AI CLI",
+  "version": "0.2.0",
   "description": "Check whether Bing has crawled and indexed a page and review Bing search traffic. Writes are only planned for a person to apply: the bundled server starts with BING_WM_ALLOW_WRITES=false.",
-  "author": { "name": "stufently", "url": "https://github.com/stufently" },
+  "author": {
+    "name": "stufently",
+    "url": "https://github.com/stufently"
+  },
   "homepage": "https://github.com/stufently/bing-webmaster-ai-cli-mcp",
   "repository": "https://github.com/stufently/bing-webmaster-ai-cli-mcp",
   "license": "MIT",
-  "keywords": ["bing", "webmaster", "seo", "indexing", "indexnow", "mcp"]
+  "keywords": [
+    "bing",
+    "webmaster",
+    "seo",
+    "indexing",
+    "indexnow",
+    "mcp"
+  ],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "Bing Webmaster API key",
+      "description": "API key from Bing Webmaster Tools (Settings > API access). Stored in the system credential store.",
+      "required": true,
+      "sensitive": true
+    }
+  }
 }

@@ -3,10 +3,16 @@
     "yandex-metrica": {
       "command": "docker",
       "args": [
-        "run", "-i", "--rm",
-        "-e", "YANDEX_METRICA_TOKEN",
-        "ghcr.io/stufently/yandex-metrica-mcp:0.2.2"
-      ]
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "YANDEX_METRICA_TOKEN",
+        "ghcr.io/stufently/yandex-metrica-mcp:0.2.2@sha256:251afcb17627468f3225c48647f9f0b1da18614a5691f6f5bfa4407ede74d403"
+      ],
+      "env": {
+        "YANDEX_METRICA_TOKEN": "${user_config.oauth_token}"
+      }
     }
   }
 }

@@ -1,11 +1,35 @@
 {
   "name": "aviasales-mcp",
-  "displayName": "Aviasales",
-  "version": "0.1.0",
+  "displayName": "Aviasales MCP",
+  "version": "0.2.0",
   "description": "Find the cheapest flight for a route or a budget from Aviasales (Travelpayouts) cached fares. Read-only: the server has no tool that books or pays.",
-  "author": { "name": "stufently", "url": "https://github.com/stufently" },
+  "author": {
+    "name": "stufently",
+    "url": "https://github.com/stufently"
+  },
   "homepage": "https://github.com/stufently/aviasales-mcp",
   "repository": "https://github.com/stufently/aviasales-mcp",
   "license": "MIT",
-  "keywords": ["aviasales", "travelpayouts", "flights", "travel", "mcp"]
+  "keywords": [
+    "aviasales",
+    "travelpayouts",
+    "flights",
+    "travel",
+    "mcp"
+  ],
+  "userConfig": {
+    "api_token": {
+      "type": "string",
+      "title": "Travelpayouts API token",
+      "description": "Your Travelpayouts (Aviasales) data API token. Stored in the system credential store.",
+      "required": true,
+      "sensitive": true
+    },
+    "market": {
+      "type": "string",
+      "title": "Market",
+      "description": "Two-letter market whose fare cache to read, e.g. ru, us, th. Prices differ by market.",
+      "default": "ru"
+    }
+  }
 }

@@ -3,13 +3,22 @@
     "zabbix": {
       "command": "docker",
       "args": [
-        "run", "-i", "--rm",
-        "-e", "ZABBIX_AI_CLI_MCP_URL",
-        "-e", "ZABBIX_AI_CLI_MCP_TOKEN",
-        "-e", "ZABBIX_AI_CLI_MCP_ALLOW_WRITE=false",
-        "ghcr.io/stufently/zabbix-ai-cli-mcp:0.4.3",
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "ZABBIX_AI_CLI_MCP_URL",
+        "-e",
+        "ZABBIX_AI_CLI_MCP_TOKEN",
+        "-e",
+        "ZABBIX_AI_CLI_MCP_ALLOW_WRITE=false",
+        "ghcr.io/stufently/zabbix-ai-cli-mcp:0.4.3@sha256:58c24a47627d283ed94232c8ce5fc55f8f18ed42dd152c7415d79424770ef887",
         "mcp"
-      ]
+      ],
+      "env": {
+        "ZABBIX_AI_CLI_MCP_URL": "${user_config.zabbix_url}",
+        "ZABBIX_AI_CLI_MCP_TOKEN": "${user_config.zabbix_token}"
+      }
     }
   }
 }

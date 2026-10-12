@@ -3,11 +3,19 @@
     "aviasales": {
       "command": "docker",
       "args": [
-        "run", "-i", "--rm",
-        "-e", "AVIASALES_API_TOKEN",
-        "-e", "AVIASALES_MARKET",
-        "ghcr.io/stufently/aviasales-mcp:0.5.1"
-      ]
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "AVIASALES_API_TOKEN",
+        "-e",
+        "AVIASALES_MARKET",
+        "ghcr.io/stufently/aviasales-mcp:0.5.2@sha256:84a92124115482588e67678c3073f43fed9d667ffa143529cd5eebe49e90f297"
+      ],
+      "env": {
+        "AVIASALES_API_TOKEN": "${user_config.api_token}",
+        "AVIASALES_MARKET": "${user_config.market}"
+      }
     }
   }
 }

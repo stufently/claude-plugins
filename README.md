@@ -11,6 +11,35 @@ claude plugin install zabbix-ai-cli-mcp@stufently-mcp
 ```
 
 Inside a session: `/plugin marketplace add stufently/claude-plugins`, then `/plugin`.
+While this repository is private, `marketplace add` clones it with the git credentials
+already on your machine (`gh auth login` or an SSH key that works without a prompt).
+
+### Settings and secrets (`userConfig`)
+
+Each plugin declares its settings in `userConfig`; the table below lists them. Set them
+in one of these ways:
+
+- **In a session**: `/plugin`, **Installed** tab, the plugin, **Configure options**.
+  Claude Code also asks for them when you enable the plugin there; secret fields are
+  masked.
+- **From your shell**, reading the secret from a hidden prompt so it never appears on
+  the command line or in shell history (needs `jq`):
+  ```bash
+  read -rsp 'Zabbix API token: ' ZBX_TOKEN; echo
+  jq -cn --arg url https://zabbix.example.com --arg token "$ZBX_TOKEN" \
+    '{zabbix_url: $url, zabbix_token: $token}' \
+    | claude plugin configure zabbix-ai-cli-mcp@stufently-mcp --values-stdin
+  unset ZBX_TOKEN
+  ```
+  `claude plugin configure <plugin>@stufently-mcp` with no flags shows which options are
+  still unset. Options left out of the JSON keep their values.
+- `claude plugin install <plugin>@stufently-mcp --config KEY=VALUE` also works, but use it
+  only for non-secret keys: the value stays in your shell history.
+
+Until the required settings are set, the plugin installs but its MCP server has no
+credentials. Restart Claude Code (or `/reload-plugins`) after changing settings.
+Non-secret values appear as rows in `/config`; secret ones do not, so change a token by
+configuring it again.
 
 ## Plugins
 
@@ -23,9 +52,7 @@ Inside a session: `/plugin marketplace add stufently/claude-plugins`, then `/plu
 | `aviasales-mcp` | `/aviasales-mcp:find-cheap-flight`, `/aviasales-mcp:where-to-fly` | `docker` · `ghcr.io/stufently/aviasales-mcp:0.5.2` (pinned by digest) | Travelpayouts API token (secret); market, default `ru` |
 | `telegram-ai-cli-mcp` | `telegram-triage`, `telegram-write-by-plan` | the plugin in [its own repository](https://github.com/stufently/telegram-ai-cli-mcp), pinned by commit (0.1.2) | nothing: `tg-ai` on `PATH`, an account signed in with `tg-ai account login` |
 
-Claude Code asks for each plugin's settings when you enable it (non-interactively:
-`claude plugin configure <plugin>@stufently-mcp --values-stdin`). Secret values go
-to the system credential store, the rest to `pluginConfigs` in your `settings.json`;
+Secret values go to the system credential store, the rest to `pluginConfigs` in your `settings.json`;
 the plugin passes them to the server through its environment (`${user_config.KEY}`
 in `.mcp.json`). Nothing is read from your shell environment, and no value is stored
 in this repository.
@@ -41,7 +68,7 @@ where data goes and its settings.
 | --- | --- | --- |
 | Zabbix | `ZABBIX_AI_CLI_MCP_ALLOW_WRITE=false` (fixed in the plugin) | The server allows direct writes unless told otherwise; with this off `zabbix_write` is not offered. |
 | Bing Webmaster | `BING_WM_ALLOW_WRITES=false` (fixed in the plugin) | Writes become `bing_plan_*` tools that only record a plan; you apply it with `bing-wm plan apply`. Also the server default since 0.1.3; kept explicit. |
-| Telegram | `TGAI_PROFILE` default `readonly` (upstream plugin) | No tool sends anything in any profile; writes are plans applied from a terminal. |
+| Telegram | `TGAI_PROFILE=readonly` (fixed in the upstream plugin) | No tool sends anything in any profile; writes are plans applied from a terminal. |
 | Google | no switch in the server | The server requests write scopes itself (`webmasters`, `analytics.edit`), so scopes do not limit it — the account's permissions do. Add the service account to Search Console as a **Restricted** user and to GA4 with the **Viewer** role. The scenarios never call the write tools (`add_property`, `submit_sitemap`, `ga4_create_property`, …). |
 | Yandex Metrica | no switch in the server | Issue the OAuth token with the `metrika:read` scope only; counter create/delete then fail at the API. The scenarios never call those tools. |
 | Aviasales | read-only API | Fares and lookups only; nothing books or pays. |

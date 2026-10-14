@@ -191,3 +191,18 @@ MCP-серверы в чате claude.ai игнорируются; в Cowork с�
   `claude mcp list` — все шесть серверов **Connected**.
 - Пробный плагин подтвердил, что sensitive-значение и `default` доходят до окружения
   процесса MCP-сервера.
+
+## Повторная проверка (2026-10-14, Claude Code 2.1.299)
+
+- Схема `userConfig` сверена с [Plugin manifest reference](https://code.claude.com/docs/en/plugins-reference#user-configuration):
+  поля `type`/`title`/`description` обязательны, `type: file` допустим, лишних ключей нет.
+- `claude plugin validate --strict` — пройден для маркетплейса, пяти папок и
+  `telegram-ai-cli-mcp@e55c1e3b`.
+- Изолированный `CLAUDE_CONFIG_DIR`: шесть плагинов ставятся; до настройки `install`
+  сообщает о незаданных обязательных опциях; после `configure --values-stdin` и
+  `install --config` секреты только в `.credentials.json`, в `settings.json` их нет;
+  `claude mcp list` — шесть **Connected** (google — с фиктивным, но структурно
+  полным ключом сервисного аккаунта: на пустом JSON сервер падает при старте).
+- Пробный плагин: sensitive-значение и `default` доходят до окружения MCP-сервера.
+- `gitleaks` 8.30.1 по истории этого репо — находок нет; в истории
+  `telegram-ai-cli-mcp` — две находки `generic-api-key` в `tests/`, обе фикстуры.

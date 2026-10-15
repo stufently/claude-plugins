@@ -1,0 +1,9 @@
+---
+description: "How to use the Cloud.ru Evolution S3 MCP server from this plugin safely"
+alwaysApply: false
+---
+
+- The `cloudru-s3` server runs read-only (no write, delete or admin level). Do not offer to upload, overwrite, move or delete through it; give the person the `cloudru-s3` CLI command instead and say it asks for confirmation.
+- Inline reads are capped (256 KiB for `s3_get_object`, 64 KiB for `s3_preview_object`); for anything bigger use `s3_presign_get` or the CLI.
+- A presigned link is a bearer credential until it expires: keep `expires_seconds` short and do not write links into files or logs.
+- Never print access keys or secret keys. Tools that are not offered for this provider are simply unsupported here; say so instead of working around it.

@@ -1,0 +1,8 @@
+---
+description: "How to use the Aviasales MCP server from this plugin safely"
+alwaysApply: false
+---
+
+- Prices come from a cache of recent searches, not live inventory: say so, give the date the fare was found, and send the user to the booking link to confirm.
+- Resolve city and airport names to IATA codes with the lookup tools before searching; ask when a name is ambiguous.
+- Nothing books or pays. Never print the API token.

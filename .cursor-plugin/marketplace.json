@@ -1,0 +1,72 @@
+{
+  "name": "stufently-mcp",
+  "owner": {
+    "name": "stufently"
+  },
+  "metadata": {
+    "description": "Cursor plugins for stufently's MCP servers: each bundles the server with safe defaults and ready-made scenarios (skills, commands, rules)",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "zabbix-ai-cli-mcp",
+      "source": "plugins/zabbix-ai-cli-mcp",
+      "description": "Ask Zabbix what is broken and why an alert fired or never arrived. Read-only by default: the bundled server starts with writes switched off."
+    },
+    {
+      "name": "google-webtools-mcp",
+      "source": "plugins/google-webtools-mcp",
+      "description": "Check why a page is not in Google, and get a weekly Search Console review, through the google-webtools MCP server."
+    },
+    {
+      "name": "bing-webmaster-ai-cli-mcp",
+      "source": "plugins/bing-webmaster-ai-cli-mcp",
+      "description": "Check whether Bing has crawled and indexed a page and review Bing search traffic. Writes are only planned for a person to apply: the bundled server starts with BING_WM_ALLOW_WRITES=false."
+    },
+    {
+      "name": "yandex-metrica-mcp",
+      "source": "plugins/yandex-metrica-mcp",
+      "description": "Traffic and goal-conversion reports from Yandex Metrica. Give it a token with the metrika:read scope only and the counter create/delete tools the server also exposes have nothing to act with."
+    },
+    {
+      "name": "aviasales-mcp",
+      "source": "plugins/aviasales-mcp",
+      "description": "Find the cheapest flight for a route or a budget from Aviasales (Travelpayouts) cached fares. Read-only: the server has no tool that books or pays."
+    },
+    {
+      "name": "selectel-s3-mcp-ai-cli",
+      "source": "plugins/selectel-s3-mcp-ai-cli",
+      "description": "Selectel S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects."
+    },
+    {
+      "name": "yandex-s3-mcp-ai-cli",
+      "source": "plugins/yandex-s3-mcp-ai-cli",
+      "description": "Yandex Cloud S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects."
+    },
+    {
+      "name": "vkcloud-s3-mcp-ai-cli",
+      "source": "plugins/vkcloud-s3-mcp-ai-cli",
+      "description": "VK Cloud S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects."
+    },
+    {
+      "name": "timeweb-s3-mcp-ai-cli",
+      "source": "plugins/timeweb-s3-mcp-ai-cli",
+      "description": "Timeweb Cloud S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects."
+    },
+    {
+      "name": "mws-s3-mcp-ai-cli",
+      "source": "plugins/mws-s3-mcp-ai-cli",
+      "description": "MWS Cloud Platform S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects."
+    },
+    {
+      "name": "cloudru-s3-mcp-ai-cli",
+      "source": "plugins/cloudru-s3-mcp-ai-cli",
+      "description": "Cloud.ru Evolution S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects."
+    },
+    {
+      "name": "beget-s3-mcp-ai-cli",
+      "source": "plugins/beget-s3-mcp-ai-cli",
+      "description": "Beget S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects."
+    }
+  ]
+}

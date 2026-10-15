@@ -1,0 +1,8 @@
+---
+description: "How to use the Bing Webmaster MCP server from this plugin safely"
+alwaysApply: false
+---
+
+- The server runs with `BING_WM_ALLOW_WRITES=false`: submissions, sitemap changes and blocks only become `bing_plan_*` plans. Tell the user that a plan is applied with `bing-wm plan apply` from their terminal; never claim it was applied.
+- Use the site URL exactly as registered in Bing Webmaster Tools; list sites first when unsure.
+- Never print the API key.

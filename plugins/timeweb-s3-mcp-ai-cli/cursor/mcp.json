@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "timeweb-s3": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "TIMEWEB_S3_ACCESS_KEY_ID",
+        "-e",
+        "TIMEWEB_S3_SECRET_ACCESS_KEY",
+        "-e",
+        "TIMEWEB_S3_POOL",
+        "ghcr.io/stufently/timeweb-s3-mcp-ai-cli:0.1.0@sha256:f81b7dfe639f214428e3270ffd4e5a867c054f2a1685bff77044e82bdff13c02"
+      ],
+      "env": {
+        "TIMEWEB_S3_ACCESS_KEY_ID": "${TIMEWEB_S3_ACCESS_KEY_ID}",
+        "TIMEWEB_S3_SECRET_ACCESS_KEY": "${TIMEWEB_S3_SECRET_ACCESS_KEY}",
+        "TIMEWEB_S3_POOL": "${TIMEWEB_S3_POOL}"
+      }
+    }
+  }
+}

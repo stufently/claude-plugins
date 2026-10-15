@@ -206,3 +206,24 @@ MCP-серверы в чате claude.ai игнорируются; в Cowork с�
 - Пробный плагин: sensitive-значение и `default` доходят до окружения MCP-сервера.
 - `gitleaks` 8.30.1 по истории этого репо — находок нет; в истории
   `telegram-ai-cli-mcp` — две находки `generic-api-key` в `tests/`, обе фикстуры.
+
+## Cursor Marketplace (за владельцем)
+
+Формат и чеклист — [cursor.com/docs/reference/plugins](https://cursor.com/docs/reference/plugins)
+(«Submitting a plugin»), проверено 15.10.2026.
+
+1. **Репо должен быть публичным** — Cursor принимает ссылку на публичный Git-репозиторий.
+   Пока `stufently/claude-plugins` приватный, подача невозможна.
+2. Форма: [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) — ссылка на
+   репозиторий. Мультиплагинный репо читается по `.cursor-plugin/marketplace.json` (12 плагинов:
+   5 общих с Claude Code + 7 S3). Каждый плагин проходит ручное ревью Cursor.
+3. Что они проверяют и что уже сделано: манифест `.cursor-plugin/plugin.json` с уникальным
+   kebab-case `name` — есть; описание — есть; frontmatter у skills/rules/commands — есть;
+   все `${VAR}` из `cursor/mcp.json` объявлены в `variables` — есть; пути относительные — есть;
+   README с настройкой — общий README, раздел «Cursor». Логотипа нет (необязателен).
+   Локальные валидаторы Cursor (`validate-plugins.mjs`, `validate-template.mjs`) — зелёные.
+4. **Не проверено в живом Cursor** (на хосте его нет): установка плагина, подстановка
+   `variables` в `cursor/mcp.json`, вызов команд. Перед подачей — поставить через Team
+   Marketplace (Import from Repo) или локально и прогнать по одной команде на плагин.
+5. Сообщество: [cursor.directory](https://cursor.directory) — каталог плагинов и MCP сообщества
+   (форму подачи 15.10 не проверить: сайт отвечал 429); для одиночных серверов достаточно кнопок «Add to Cursor» из README серверов.

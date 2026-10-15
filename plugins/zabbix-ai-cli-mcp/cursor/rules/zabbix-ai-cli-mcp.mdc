@@ -1,0 +1,9 @@
+---
+description: "How to use the Zabbix MCP server from this plugin safely"
+alwaysApply: false
+---
+
+- The `zabbix` server runs with `ZABBIX_AI_CLI_MCP_ALLOW_WRITE=false`: no tool acknowledges, closes or silences anything. Do not promise those actions; point to the `zabbix-ai-cli-mcp` CLI (`plan` / `approve`) instead.
+- Resolve identifiers with tools (`zabbix_resolve`, `zabbix_hosts`) before naming an event, host or trigger. Never guess IDs.
+- Quote values from tool output (tool, field, value) and mark inferences as inferences.
+- Never print the Zabbix API token or put it into files, commands or chat.

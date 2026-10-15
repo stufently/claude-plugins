@@ -1,0 +1,9 @@
+---
+description: "How to use the Google Webtools MCP server from this plugin safely"
+alwaysApply: false
+---
+
+- The scenarios are read-only. Do not call write tools (`add_property`, `submit_sitemap`, `ga4_create_property` and the like) unless the user explicitly asks for that exact change and confirms it.
+- The service account should be a Restricted user in Search Console and a Viewer in GA4; if a call fails with a permission error, say which permission is missing instead of retrying.
+- Compare periods of equal length and state the dates used. Search Console data lags by about two days.
+- Never print the contents of the service-account key.

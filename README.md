@@ -84,6 +84,33 @@ To change Zabbix or Bing directly from an agent, configure that server yourself
   with `node` from the checkout, which has no `node_modules` when installed from
   GitHub. It will be added once the packages are published.
 
+## Cursor
+
+The same repository is a Cursor plugin marketplace (`.cursor-plugin/marketplace.json`,
+format from [cursor.com/docs/reference/plugins](https://cursor.com/docs/reference/plugins)).
+Each Cursor plugin bundles the MCP server, the scenarios as skills, a slash command per
+scenario and one rule with the server's safety limits. The five plugins above reuse their
+`skills/` folder and pin the same image or package; the seven S3 plugins exist only for
+Cursor so far.
+
+| Plugin | Commands (scenario) | Runs | Variables |
+| --- | --- | --- | --- |
+| `zabbix-ai-cli-mcp` | `/zabbix-investigate-alert`, `/zabbix-whats-broken` | `docker`, writes off | `ZABBIX_URL`, `ZABBIX_TOKEN` |
+| `google-webtools-mcp` | `/gsc-check-page-indexing`, `/gsc-weekly-seo-review` | `docker` | `GOOGLE_CREDENTIALS_FILE` (path to the key) |
+| `bing-webmaster-ai-cli-mcp` | `/bing-check-page-indexing`, `/bing-traffic-review` | `uvx`, writes as plans | `BING_WM_API_KEY` |
+| `yandex-metrica-mcp` | `/metrica-traffic-report`, `/metrica-goal-conversions` | `docker` | `YANDEX_METRICA_TOKEN` |
+| `aviasales-mcp` | `/aviasales-find-cheap-flight`, `/aviasales-where-to-fly` | `docker` | `AVIASALES_API_TOKEN`, `AVIASALES_MARKET` |
+| `<provider>-s3-mcp-ai-cli` × 7 (Selectel, Yandex Cloud, VK Cloud, Timeweb, MWS, Cloud.ru, Beget) | `/s3-<provider>-restore`, `/s3-<provider>-usage` | `docker` · `ghcr.io/stufently/<provider>-s3-mcp-ai-cli:0.1.0`, read-only | `<PROVIDER>_S3_ACCESS_KEY_ID`, `<PROVIDER>_S3_SECRET_ACCESS_KEY`; `<PROVIDER>_S3_POOL` (defaults to the provider pool) |
+
+Secrets are plugin `variables`: `cursor/mcp.json` holds only `${VAR}` placeholders, and
+the values are set in Cursor under **Plugins → Configure**. Until the repository is in a
+marketplace, a team admin can add it under **Dashboard → Plugins & MCPs → Team
+Marketplaces → Import from Repo** (Teams/Enterprise plans). Single servers without the
+scenarios install with the **Add to Cursor** button in each server's README.
+
+Telegram (`telegram-ai-cli-mcp`) and `yandex-mcp` are not in the Cursor marketplace yet:
+their plugins live in their own repositories.
+
 ## Repository layout
 
 ```
@@ -92,8 +119,16 @@ plugins/<name>/
   .claude-plugin/plugin.json      manifest
   .mcp.json                       MCP server, pinned version, safe defaults
   README.md, LICENSE              per-plugin docs (the directory ships only this folder)
-  skills/<scenario>/SKILL.md      scenarios
+  skills/<scenario>/SKILL.md      scenarios (shared with Cursor)
+  .cursor-plugin/plugin.json      Cursor manifest (paths below, variables)
+  cursor/mcp.json                 Cursor MCP config with ${VAR} placeholders
+  cursor/rules/*.mdc              Cursor rule: the server's safety limits
+  cursor/commands/*.md            Cursor slash commands, one per scenario
+.cursor-plugin/marketplace.json   Cursor catalog (name: stufently-mcp)
 ```
+
+Cursor-only files sit under `cursor/` so Claude Code, which discovers `commands/` in a
+plugin, does not pick them up.
 
 ## Maintaining
 
@@ -103,12 +138,18 @@ plugins/<name>/
   or the package pin in `.mcp.json` and the plugin README, re-check
   the tool names the skills use against the server's `tools/list`, and bump `version`
   in that plugin's `plugin.json` — users stay on the old copy otherwise.
+- Cursor: `cursor/mcp.json` must pin the same image/package as `.mcp.json`; bump `version`
+  in `.cursor-plugin/plugin.json` too. Validate with Cursor's scripts from
+  [cursor/plugins](https://github.com/cursor/plugins) (`scripts/validate-plugins.mjs`
+  and the schemas) and [cursor/plugin-template](https://github.com/cursor/plugin-template)
+  (`scripts/validate-template.mjs`), run from the repository root.
 - `telegram-ai-cli-mcp` is pinned by `sha` in `marketplace.json`; move the pin to take a
   newer upstream plugin.
 
 ## Anthropic directory
 
-See [SUBMISSION.md](SUBMISSION.md) for what to enter in the developer portal per plugin.
+See [SUBMISSION.md](SUBMISSION.md) for what to enter in the developer portal per plugin,
+and for the Cursor Marketplace submission.
 
 ## License
 

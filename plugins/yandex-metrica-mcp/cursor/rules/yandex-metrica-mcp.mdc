@@ -1,0 +1,8 @@
+---
+description: "How to use the Yandex Metrica MCP server from this plugin safely"
+alwaysApply: false
+---
+
+- Reports only. Never call counter create or delete tools; with a `metrika:read` token they fail anyway.
+- Name the counter, the period and the attribution used in every answer; compare equal-length periods.
+- Never print the OAuth token.

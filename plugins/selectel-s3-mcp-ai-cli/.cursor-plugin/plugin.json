@@ -1,0 +1,50 @@
+{
+  "name": "selectel-s3-mcp-ai-cli",
+  "displayName": "Selectel S3 MCP",
+  "version": "0.1.0",
+  "description": "Selectel S3 backups for Cursor: find and restore a file from a backup, see where the bucket's space goes. Read-only: the bundled server cannot write, delete or move objects.",
+  "author": {
+    "name": "stufently"
+  },
+  "homepage": "https://github.com/stufently/selectel-s3-mcp-ai-cli",
+  "repository": "https://github.com/stufently/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "selectel",
+    "s3",
+    "object-storage",
+    "backup",
+    "restore",
+    "mcp"
+  ],
+  "category": "cloud",
+  "skills": "./skills/",
+  "rules": "./cursor/rules/",
+  "commands": "./cursor/commands/",
+  "mcpServers": "./cursor/mcp.json",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "SELECTEL_S3_ACCESS_KEY_ID": {
+        "type": "string",
+        "title": "Selectel S3 access key ID",
+        "description": "S3 access key ID; a key scoped to the backup buckets is enough."
+      },
+      "SELECTEL_S3_SECRET_ACCESS_KEY": {
+        "type": "string",
+        "title": "Selectel S3 secret access key",
+        "description": "S3 secret access key for that key ID."
+      },
+      "SELECTEL_S3_POOL": {
+        "type": "string",
+        "title": "Selectel S3 pool",
+        "description": "Pool (region) of the bucket; it sets both the endpoint and the signing region.",
+        "default": "ru-1"
+      }
+    },
+    "required": [
+      "SELECTEL_S3_ACCESS_KEY_ID",
+      "SELECTEL_S3_SECRET_ACCESS_KEY"
+    ]
+  }
+}

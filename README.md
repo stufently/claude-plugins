@@ -78,11 +78,12 @@ To change Zabbix or Bing directly from an agent, configure that server yourself
 
 ## Not listed yet
 
-- **yandex-mcp** (Search, Wordstat, Webmaster, Metrika, Direct). `@stufently/*` is not
-  on npm yet and there is no container image, and the plugin in
-  [stufently/yandex-mcp](https://github.com/stufently/yandex-mcp) starts its servers
-  with `node` from the checkout, which has no `node_modules` when installed from
-  GitHub. It will be added once the packages are published.
+- **yandex-mcp** (Search, Wordstat, Webmaster, Metrika, Direct). All five
+  `@stufently/yandex-*-mcp` packages are on npm (2.2.0, 2026-10-15), so a plugin here
+  can run them with `npx -y`. Not added yet: the plugin in
+  [stufently/yandex-mcp](https://github.com/stufently/yandex-mcp) still starts its
+  servers with `node` from the checkout, which has no `node_modules` when installed
+  from GitHub. Until then, use the npm packages directly (see that repository's README).
 
 ## Cursor
 

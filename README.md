@@ -11,8 +11,7 @@ claude plugin install zabbix-ai-cli-mcp@stufently-mcp
 ```
 
 Inside a session: `/plugin marketplace add stufently/claude-plugins`, then `/plugin`.
-While this repository is private, `marketplace add` clones it with the git credentials
-already on your machine (`gh auth login` or an SSH key that works without a prompt).
+The repository is public, so `marketplace add` needs no GitHub credentials.
 
 ### Settings and secrets (`userConfig`)
 

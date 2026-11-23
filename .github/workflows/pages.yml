@@ -1,0 +1,39 @@
+# Landing + docs site on GitHub Pages: https://github.com/stufently/gh-pages-site
+# Content comes from README.md, docs/*.md and .github/site/site.toml.
+# Any *.md change triggers a rebuild, so pages listed in site.toml are covered.
+# Builds on PRs as a check, deploys from the default branch. No releases or tags.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      # Block scalar instead of quotes: Prettier keeps it as is, so
+      # `prettier --check` passes with singleQuote true or false.
+      - >-
+        **.md
+      - .github/site/**
+      - .github/workflows/pages.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - >-
+        **.md
+      - .github/site/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  site:
+    uses: stufently/gh-pages-site/.github/workflows/pages.yml@8617cf629539138022c5ac11dc96c8f957e0a19f # v1.1.0
+    permissions:
+      contents: read
+      pages: write
+      id-token: write

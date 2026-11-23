@@ -1,0 +1,59 @@
+# Site config for .github/site/build.py. Everything else comes from README.md.
+name = "stufently MCP plugins"
+title = "Claude Code plugins for Zabbix, Search Console, Bing, Metrica"
+headline = "Claude Code plugin marketplace for stufently's MCP servers"
+description = "Each plugin installs an MCP server plus ready-made scenarios: Zabbix, Search Console, Bing, Yandex Metrica, Aviasales, Telegram. Safe defaults, pinned versions."
+lang = "en"
+keywords = ["claude code plugins", "claude code marketplace", "mcp server", "zabbix mcp", "search console mcp", "bing webmaster mcp", "yandex metrica mcp", "cursor plugins", "skills"]
+license = "MIT"
+license_url = "https://opensource.org/license/mit"
+category = "DeveloperApplication"
+os = "Linux, macOS, Windows"
+eyebrow = "Open source · MIT · Claude Code and Cursor"
+download_url = "https://github.com/stufently/claude-plugins"
+
+# README "## <name>" sections shown on the home page, in this order (exact titles).
+landing_sections = ["Plugins", "Safe defaults"]
+
+# Per-plugin READMEs: what each plugin runs, where data goes, its settings.
+pages = [
+  "plugins/zabbix-ai-cli-mcp/README.md",
+  "plugins/google-webtools-mcp/README.md",
+  "plugins/bing-webmaster-ai-cli-mcp/README.md",
+  "plugins/yandex-metrica-mcp/README.md",
+  "plugins/aviasales-mcp/README.md",
+]
+docs_dir = ""
+
+features = [
+  "Install: claude plugin marketplace add stufently/claude-plugins, then claude plugin install <plugin>@stufently-mcp. The repository is public, no GitHub credentials needed.",
+  "Each plugin installs the MCP server and ready-made scenarios (skills) built on its real tools.",
+  "Secrets are asked for on enable and kept in the system credential store; nothing is read from your shell environment.",
+  "Safe defaults: Zabbix and Bing writes switched off, Telegram in the readonly profile.",
+  "Docker images pinned by digest, PyPI packages pinned by exact version.",
+  "The same repository is a Cursor plugin marketplace, with seven read-only S3 plugins for Cursor.",
+]
+
+[[faq]]
+q = "How do I install a stufently MCP plugin in Claude Code?"
+a = "Run claude plugin marketplace add stufently/claude-plugins and then claude plugin install zabbix-ai-cli-mcp@stufently-mcp, or inside a session /plugin marketplace add stufently/claude-plugins followed by /plugin."
+
+[[faq]]
+q = "Which plugins are in the marketplace?"
+a = "zabbix-ai-cli-mcp, google-webtools-mcp, bing-webmaster-ai-cli-mcp, yandex-metrica-mcp, aviasales-mcp and telegram-ai-cli-mcp, each with two scenarios."
+
+[[faq]]
+q = "Where are my API tokens stored?"
+a = "Secret values go to the system credential store, the rest to pluginConfigs in your settings.json. The plugin passes them to the server through its environment; no value is stored in the repository."
+
+[[faq]]
+q = "Can the plugins change my Zabbix or Bing Webmaster data?"
+a = "Not by default. The Zabbix plugin fixes ZABBIX_AI_CLI_MCP_ALLOW_WRITE=false and the Bing plugin fixes BING_WM_ALLOW_WRITES=false, so Bing writes only record a plan you apply with bing-wm plan apply."
+
+[[faq]]
+q = "What do I need installed?"
+a = "Docker for the docker plugins and uv for the uvx plugin (Bing Webmaster). The Telegram plugin needs tg-ai on PATH with a signed-in account."
+
+[[faq]]
+q = "Does it work in Cursor?"
+a = "Yes. The repository is also a Cursor plugin marketplace: each Cursor plugin bundles the MCP server, the scenarios as skills, a slash command per scenario and a rule with the server's safety limits."

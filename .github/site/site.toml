@@ -11,6 +11,8 @@ category = "DeveloperApplication"
 os = "Linux, macOS, Windows"
 eyebrow = "Open source · MIT · Claude Code and Cursor"
 download_url = "https://github.com/stufently/claude-plugins"
+# Copied by the generator to assets/og.svg: the Cursor Marketplace logo URL.
+og_image = ".github/site/logo.svg"
 
 # README "## <name>" sections shown on the home page, in this order (exact titles).
 landing_sections = ["Plugins", "Safe defaults"]

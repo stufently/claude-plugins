@@ -216,7 +216,10 @@ MCP-серверы в чате claude.ai игнорируются; в Cowork с�
 3. Что они проверяют и что уже сделано: манифест `.cursor-plugin/plugin.json` с уникальным
    kebab-case `name` — есть; описание — есть; frontmatter у skills/rules/commands — есть;
    все `${VAR}` из `cursor/mcp.json` объявлены в `variables` — есть; пути относительные — есть;
-   README с настройкой — общий README, раздел «Cursor». Логотипа нет (необязателен).
+   README с настройкой — общий README, раздел «Cursor».
+   **Логотип в форме обязателен** (квадратный 1:1 SVG/PNG с подложкой, по публичному URL):
+   `https://stufently.github.io/claude-plugins/assets/og.svg` — исходник `.github/site/logo.svg`
+   (генератор Pages копирует `og_image` из `.github/site/site.toml` в `assets/og.svg`).
    Локальные валидаторы Cursor (`validate-plugins.mjs`, `validate-template.mjs`) — зелёные.
 4. **Не проверено в живом Cursor** (на хосте его нет): установка плагина, подстановка
    `variables` в `cursor/mcp.json`, вызов команд. Перед подачей — поставить через Team
